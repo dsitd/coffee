@@ -10,7 +10,7 @@ class App(QtWidgets.QMainWindow, widget.Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.con = sqlite3.connect("coffee.sqlite")
+        self.con = sqlite3.connect("../data/coffee.sqlite")
         self.modified = {}
         self.titles = None
         self.update_result()
