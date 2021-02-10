@@ -56,7 +56,7 @@ class Dialog(QtWidgets.QDialog, dialog.Ui_Dialog):
         super().__init__()
         self.setupUi(self)
         self.data = data
-        con = sqlite3.connect("coffee.sqlite")
+        con = sqlite3.connect("../data/coffee.sqlite")
         cur = con.cursor()
         if data is None:
             self.accepted.connect(self.ok)
@@ -70,7 +70,7 @@ class Dialog(QtWidgets.QDialog, dialog.Ui_Dialog):
             self.accepted.connect(self.change)
 
     def change(self):
-        con = sqlite3.connect("coffee.sqlite")
+        con = sqlite3.connect("../data/coffee.sqlite")
         cur = con.cursor()
         sql = f'UPDATE main SET gradeName = "{self.lineEdit.text()}", ' \
               f'roast = "{self.lineEdit_2.text()}", type = "{self.lineEdit_3.text()}"' \
@@ -83,7 +83,7 @@ class Dialog(QtWidgets.QDialog, dialog.Ui_Dialog):
         self.close()
 
     def ok(self):
-        con = sqlite3.connect("coffee.sqlite")
+        con = sqlite3.connect("../data/coffee.sqlite")
         cur = con.cursor()
         sql = 'SELECT MAX(id) from main'
         cur.execute(sql)
